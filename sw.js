@@ -1,6 +1,6 @@
 self.addEventListener('install', function (event) {
     event.waitUntil(
-        caches.open('v0.2').then(function (cache) {
+        caches.open('v0.3').then(function (cache) {
             return cache.addAll([
                 'index.html',
                 'comite.html',
@@ -120,7 +120,8 @@ self.addEventListener('install', function (event) {
                 'images/icon-75.png',
                 'images/icon-120.png',
                 'images/icon-192.png',
-                'images/icon-512.png'
+                'images/icon-512.png',
+                'images/go-to-back.png'
             ])
         })
     )
@@ -131,7 +132,7 @@ self.addEventListener('fetch', function (event) {
         caches.match(event.request).then(function (resp) {
             return resp || fetch(event.request).then(function (response) {
                 let responseClone = response.clone();
-                caches.open('v0.2').then(function (cache) {
+                caches.open('v0.3').then(function (cache) {
                     cache.put(event.request, responseClone)
                 });
                 return response;
@@ -143,7 +144,7 @@ self.addEventListener('fetch', function (event) {
 });
 
 self.addEventListener('activate', function (event) {
-   var cacheWhitelist = ['v0.2'];
+   var cacheWhitelist = ['v0.3'];
 
    event.waitUntil(
        caches.keys().then(function (keyList) {
