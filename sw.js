@@ -1,6 +1,6 @@
 self.addEventListener('install', function (event) {
     event.waitUntil(
-        caches.open('v0.9').then(function (cache) {
+        caches.open('v0.10').then(function (cache) {
             return cache.addAll([
                 'index.html',
                 'comite.html',
@@ -128,7 +128,7 @@ self.addEventListener('install', function (event) {
                 //'15.html',
                 //'16.html',
                 'precamp.html',
-                'precamp_samedi.html',
+                'prcamp_samedi.html',
                 'compteur/timeTo.css',
                 'compteur/jquery.time-to.min.js',
                 //'precamp.html',
@@ -143,7 +143,7 @@ self.addEventListener('fetch', function (event) {
         caches.match(event.request).then(function (resp) {
             return resp || fetch(event.request).then(function (response) {
                 let responseClone = response.clone();
-                caches.open('v0.9').then(function (cache) {
+                caches.open('v0.10').then(function (cache) {
                     cache.put(event.request, responseClone)
                 });
                 return response;
@@ -155,7 +155,7 @@ self.addEventListener('fetch', function (event) {
 });
 
 self.addEventListener('activate', function (event) {
-   var cacheWhitelist = ['v0.9'];
+   var cacheWhitelist = ['v0.10'];
 
    event.waitUntil(
        caches.keys().then(function (keyList) {
