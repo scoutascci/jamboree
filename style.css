@@ -2774,7 +2774,7 @@ h2#Note{
 }
 .tabs label.tablabel--12:last-child(), .tabs label.tablabel--13:last-child(){
 	-webkit-box-shadow: none;
-	box-shadow: inset none;
+	box-shadow: inset;
 	-moz-box-shadow: none;
 }
 .tabs .tab {
