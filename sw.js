@@ -1,6 +1,6 @@
 self.addEventListener('install', function (event) {
     event.waitUntil(
-        caches.open('v0.5.1').then(function (cache) {
+        caches.open('v0.6').then(function (cache) {
             return cache.addAll([
                 'index.html',
                 'comite.html',
@@ -141,7 +141,7 @@ self.addEventListener('fetch', function (event) {
         caches.match(event.request).then(function (resp) {
             return resp || fetch(event.request).then(function (response) {
                 let responseClone = response.clone();
-                caches.open('v0.5.1').then(function (cache) {
+                caches.open('v0.6').then(function (cache) {
                     cache.put(event.request, responseClone)
                 });
                 return response;
@@ -153,7 +153,7 @@ self.addEventListener('fetch', function (event) {
 });
 
 self.addEventListener('activate', function (event) {
-   var cacheWhitelist = ['v0.5.1'];
+   var cacheWhitelist = ['v0.6'];
 
    event.waitUntil(
        caches.keys().then(function (keyList) {
