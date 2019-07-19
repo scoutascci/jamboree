@@ -22,3 +22,7 @@ window.addEventListener('beforeinstallprompt', (e)=>{
     });
 });
 
+window.addEventListener('appinstalled', (evt) =>{
+    console.log('ash installed');
+});
+
